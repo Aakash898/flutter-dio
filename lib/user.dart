@@ -2,19 +2,19 @@ import 'address.dart';
 import 'company.dart';
 
 class User {
-  int id;
+  int? id;
   String name, email, phone, website;
   Address address;
   Company company;
 
   User(
       {this.id,
-        this.name,
-        this.email,
-        this.phone,
-        this.website,
-        this.address,
-        this.company});
+      required this.name,
+      required this.email,
+      required this.phone,
+      required this.website,
+      required this.address,
+      required this.company});
 
   factory User.fromJSON(Map<String, dynamic> parsedJson) {
     return User(
