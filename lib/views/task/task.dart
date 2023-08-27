@@ -45,9 +45,7 @@ class _MyDynamicListState extends State<MyDynamicList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Dynamic TextFields Example'),
-      ),
+
       body: Column(
         children: [
           Column(children: textFields),

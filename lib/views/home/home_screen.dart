@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'user.dart';
+import 'package:flutterdioample/resources/app_urls.dart';
+import '../../model/user.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -19,8 +20,7 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Future<List<User>> fetchUsers() async {
-    Response response =
-        await Dio().get('https://jsonplaceholder.typicode.com/users');
+    Response response = await Dio().get(AppUrl.usersList);
     if (response.statusCode == 200) {
       var getUsersData = response.data as List;
       var listUsers = getUsersData.map((i) => User.fromJSON(i)).toList();
@@ -53,21 +53,11 @@ class HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 5),
                       Text(user.email),
                       SizedBox(height: 5),
-                      Text(user.address.street +
-                          " " +
-                          user.address.suite +
-                          " " +
-                          user.address.city +
-                          " " +
-                          user.address.zipcode),
                       SizedBox(height: 5),
                       Text(user.phone),
                       SizedBox(height: 5),
                       Text(user.website),
                       SizedBox(height: 5),
-                      Text(user.company.name),
-                      SizedBox(height: 5),
-                      Text(user.company.catchPhrase),
                     ],
                   ),
                 );

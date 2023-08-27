@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdioample/utils/routes_name.dart';
 import 'package:provider/provider.dart';
-import 'home_screen.dart';
-import 'login_view_model.dart';
+import '../home/home_screen.dart';
+import '../../viewmodels/login_view_model.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
@@ -35,12 +36,8 @@ class LoginScreen extends StatelessWidget {
                     usernameController.text,
                     passwordController.text,
                   );
-
                   if (status == ApiResponseStatus.success) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
-                    );
+                    Navigator.pushNamed(context, RoutesName.home);
                   } else {
                     print('Login failed');
                   }
